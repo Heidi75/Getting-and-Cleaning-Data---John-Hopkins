@@ -1,0 +1,28 @@
+.Question 2
+Use the data you loaded from Question 1. Consider the variable FES in the code book.
+Which of the "tidy data" principles does this variable violate?
+
+Numeric values in tidy data can not represent categories.
+Tidy data has no missing values.
+Each variable in a tidy data set has been transformed to be interpretable.
+
+Answer Tidydata must have one varible per column
+FROM CODEBOOK
+FES 1
+ Family type and employment status
+ b .N/A (GQ/vacant/not a family)
+ 1 .Married-couple family: Husband and wife in LF
+ 2 .Married-couple family: Husband in labor force, wife
+ .not in LF
+ 3 .Married-couple family: Husband not in LF,
+ .wife in LF
+ 4 .Married-couple family: Neither husband nor wife in
+ .LF
+ 5 .Other family: Male householder, no wife present, in
+ .LF
+ 6 .Other family: Male householder, no wife present,
+ .not in LF
+ 7 .Other family: Female householder, no husband
+ .present, in LF
+ 8 .Other family: Female householder, no husband
+ .present, not in LF 
