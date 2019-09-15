@@ -1,0 +1,42 @@
+The American Community Survey distributes downloadable data about United States communities.
+Download the 2006 microdata survey about housing for the state of Idaho using download.file() from here:
+
+https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv
+using the fread() command load the data into an R object
+
+#The American Community Survey distributes downloadable data about United States communities. Download the 2006 microdata survey about housing for the state of Idaho using download.file() from here:
+#https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv
+#using the fread() command load the data into an R object
+
+#get working directory
+getwd()
+#checking data directory and creating one if it does not exist
+if(!file.exists("data")){
+  dir.create("data")
+}
+#date
+dateDownloaded<-date()
+dateDownloaded
+#"Sun Sep 15 16:32:31 2019"
+
+#to use freed must import library data.table
+library(data.table)
+
+#freed automatically deals with different cases by transfering column names or making them up themselvs
+# it is rediculously fast, 
+
+read.table("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv")
+DT<- fread("https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Fss06pid.csv")
+#The following are ways to calculate the average value of the variable pwgtp15
+#broken down by sex. Using the data.table package, which will deliver the fastest user time?
+
+system.time(rowMeans(DT)[DT$SEX==1]; rowMeans(DT)[DT$SEX==2])
+            
+system.time(mean(DT[DT$SEX==1,]$pwgtp15); mean(DT[DT$SEX==2,]$pwgtp15))
+
+system.time(mean(DT$pwgtp15,by=DT$SEX))             
+system.time(tapply(DT$pwgtp15,DT$SEX,mean)
+system.time(sapply(split(DT$pwgtp15,DT$SEX),mean)
+system.time(DT[,mean(pwgtp15),by=SEX])
+
+Some of my answers come to 0 across the board but the quiz is telling me this is incorrect.
