@@ -1,0 +1,31 @@
+#Read the XML data on Baltimore restaurants from here:
+#https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml
+#How many restaurants have zipcode 21231?
+
+#Read the XML data on Baltimore restaurants from here:
+#https://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml
+#How many restaurants have zipcode 21231?
+
+#Reading Excel files
+#get working directory
+getwd()
+#checking data directory and creating one if it does not exist
+if(!file.exists("data")){
+  dir.create("data")
+}
+
+library(XML)
+dateDownloaded<-date()
+dateDownloaded
+#"Sun Sep 15 16:13:58 2019"
+#download file Download the XML file which is an extensive markup file mostly used for webscraping
+doc<-xmlTreeParse("http://d396qusza40orc.cloudfront.net/getdata%2Fdata%2Frestaurants.xml",useInternal = TRUE)
+rootNode <- xmlRoot(doc)
+xmlName(rootNode)
+names(rootNode)
+rootNode[[1]]
+rootNode[[1]] [[2]]
+#How many restaurants have zipcode 21231
+zipcode <- xpathSApply(rootNode,"//zipcode",xmlValue)
+Answer3<-sum(zipcode==21231)
+Answer3
